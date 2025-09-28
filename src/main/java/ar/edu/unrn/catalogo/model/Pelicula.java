@@ -86,16 +86,6 @@ public class Pelicula {
     String sinopsis() { return sinopsis; }
     String imagen() { return imagen; }
 
-    public static PeliculaInfo toInfo(Pelicula pelicula) {
-        return new PeliculaInfo(
-            pelicula.id(),
-            pelicula.titulo(),
-            pelicula.anio(),
-            pelicula.precio(),
-            pelicula.director().nombre(),
-            pelicula.actores().stream().map(Actor::nombre).toList()
-        );
-    }
 
     public PeliculaInfoCatalogo toInfoCatalogo() {
         return new PeliculaInfoCatalogo(
