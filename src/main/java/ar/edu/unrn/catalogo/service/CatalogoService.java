@@ -14,9 +14,9 @@ public class CatalogoService {
     public CatalogoService(EntityManagerFactory emf) {
         this.emf = emf;
     }
-
+    // Listar todas las películas en orden descendente por año
     public List<PeliculaInfoCatalogo> listarPeliculas() {
-        return emf.createEntityManager().createQuery("from Pelicula", Pelicula.class)
+        return emf.createEntityManager().createQuery("from Pelicula order by anio desc", Pelicula.class)
             .getResultList()
             .stream()
             .map(Pelicula::toInfoCatalogo)
@@ -24,13 +24,10 @@ public class CatalogoService {
     }
 
     public Optional<PeliculaDetalle> buscarPorId(Long id) {
-        var em = emf.createEntityManager();
-        try {
+        try (var em = emf.createEntityManager()) {
             Pelicula p = em.find(Pelicula.class, id);
             if (p == null) return Optional.empty();
             return Optional.of(p.toDetalle());
-        } finally {
-            em.close();
         }
     }
 }
