@@ -74,10 +74,10 @@ public class Pelicula {
     }
 
     // Métodos de acceso package-private para el controlador
-    Long id() { return id; }
-    String titulo() { return titulo; }
+    public Long id() { return id; }
+    public String titulo() { return titulo; }
     int anio() { return anio; }
-    double precio() { return precio; }
+    public double precio() { return precio; }
     Director director() { return director; }
     List<Actor> actores() { return Collections.unmodifiableList(actores); }
     String condicion() { return condicion; }

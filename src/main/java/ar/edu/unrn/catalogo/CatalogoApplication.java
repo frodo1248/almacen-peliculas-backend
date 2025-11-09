@@ -1,5 +1,6 @@
 package ar.edu.unrn.catalogo;
 
+import ar.edu.unrn.catalogo.messaging.PeliculaMessagePublisher;
 import ar.edu.unrn.catalogo.model.Actor;
 import ar.edu.unrn.catalogo.model.Director;
 import ar.edu.unrn.catalogo.model.Pelicula;
@@ -35,7 +36,7 @@ public class CatalogoApplication {
     }
 
     @Bean
-    public CatalogoService catalogoService(EntityManagerFactory emf) {
-        return new CatalogoService(emf);
+    public CatalogoService catalogoService(EntityManagerFactory emf, PeliculaMessagePublisher messagePublisher) {
+        return new CatalogoService(emf, messagePublisher);
     }
 }
