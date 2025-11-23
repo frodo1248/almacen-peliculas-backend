@@ -40,9 +40,7 @@ public class CatalogoController {
     @PostMapping
     public PeliculaDetalle agregarPelicula(@RequestBody PeliculaNueva peliculaNueva,
                                           @AuthenticationPrincipal Jwt jwt) {
-        // Opcional: puedes extraer información del usuario
-        // String username = jwt.getClaimAsString("preferred_username");
-        // String email = jwt.getClaimAsString("email");
+
 
         // Crea una nueva película y devuelve su detalle completo
         return catalogoService.crearPelicula(peliculaNueva);

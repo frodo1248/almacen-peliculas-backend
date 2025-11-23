@@ -35,10 +35,10 @@ public class SecurityConfig {
                         .requestMatchers("/actuator/**").permitAll()
                         .requestMatchers("/error").permitAll()
                         // Endpoints de lectura - públicos para cualquier usuario
-                        .requestMatchers(HttpMethod.GET, "/catalogo").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/catalogo/{id}").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/{id}").permitAll()
                         // Endpoints de escritura - requieren autenticación con ROLE_ADMIN
-                        .requestMatchers(HttpMethod.POST, "/catalogo").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/").hasRole("ADMIN")
                         // Todos los demás endpoints requieren autenticación
                         .anyRequest().authenticated()
                 )
